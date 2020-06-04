@@ -1,0 +1,23 @@
+{
+  "name": "selenium_intro",
+  "version": "1.0.0",
+  "description": "Selenium introduction for BrowserStack onboarding",
+  "main": "index.js",
+  "dependencies": {
+    "selenium-webdriver": "^4.0.0-alpha.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericletsgo/selenium_intro.git"
+  },
+  "author": "Eric Wang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ericletsgo/selenium_intro/issues"
+  },
+  "homepage": "https://github.com/ericletsgo/selenium_intro#readme"
+}
