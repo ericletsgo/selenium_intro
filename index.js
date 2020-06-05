@@ -16,19 +16,21 @@ chrome.setDefaultService( new chrome.ServiceBuilder( chromedriver.path ).build()
         .click();
     await ( await driver.findElement( By.className( 'a-button-text' ) ) ).click();
     await ( await driver.findElement( By.linkText( 'Price: High to Low' ) ) ).click();
-    await driver.findElement( By.xpath( '//*[@id="search"]/div[1]/div[2]' ) ).forEach( ( ele ) => {
-        console.log(ele);  
-    } )
-    // await ( await driver.findElements( By.className( 's-include-content-margin' ) ) ).forEach( ( ele ) => {
-        // ele.findElement( By.className( 'a-size-medium' ) ).getText().then( ( text ) => {
-        //     console.log( 'Title: ' + text );
-        //     ele.findElement( By.className ( 'a-price-whole' ) ).getText()
-        //         .then( text => console.log( 'Price: $' + text ) )
-        //         .catch( err => console.log( err ) );
-        // })
-        // .catch( err => console.log( err ) );
-    // });
+    await ( await driver.findElements( By.className( 's-include-content-margin' ) ) ).forEach( ( ele ) => {
+        ele.findElement( By.className( 'a-size-medium' ) ).getText()
+          .then( text => console.log( 'Title: ' + text ) )
+          .catch( err => console.log( err ));
+        ele.findElement( By.className( 'a-price-whole' ) ).getText()
+          .then( text => console.log( 'Price: $' + text ) )
+          .catch( err => console.log( err ));
+        ele.findElement( By.tagName( 'a' ) ).getAttribute( 'href' )
+          .then( text => console.log( 'Link to Product: ' + text + '\n' ) )
+          .catch( err => console.log( err ));
+    }).then( driver.quit() );
   } finally {
-    await driver.quit();
+    // await Promise.all( driver.quit() );
   }
 })();
+
+// how to handle error
+// try catch or findelements and if else block
