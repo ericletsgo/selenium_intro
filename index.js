@@ -4,8 +4,9 @@ const chromedriver = require( 'chromedriver' );
 
 chrome.setDefaultService( new chrome.ServiceBuilder( chromedriver.path ).build() );
 
-(async function seleniumIntro() {
+(async function amazonIPhoneXScraper() {
   let driver = await new Builder().forBrowser( 'chrome' ).build();
+  const delay = timeToWait => new Promise(resolve => setTimeout(resolve, timeToWait));
 
   try {
     await driver.get( 'http://www.amazon.com' );
@@ -15,7 +16,7 @@ chrome.setDefaultService( new chrome.ServiceBuilder( chromedriver.path ).build()
     await ( await driver.findElement( By.xpath( '//*[@id="a-autoid-0-announce"]' ) ) ).click();
     await ( await driver.findElement( By.linkText( 'Price: High to Low' ) ) ).click();
     await ( await driver.findElements( By.className( 's-include-content-margin' ) ) ).forEach( ( ele ) => {
-      ele.findElements( By.className( 'a-size-medium' ) ).then( (eleArray ) => {
+      ele.findElements( By.className( 'a-size-medium' ) ).then( ( eleArray ) => {
         if ( eleArray.length ) {
           eleArray[0].getText()
             .then( text => console.log( 'Title: ' + text ) )
@@ -37,16 +38,12 @@ chrome.setDefaultService( new chrome.ServiceBuilder( chromedriver.path ).build()
         }
       });
     });
-    // await driver.wait( until.titleIs( 'Amazon.com : iPhone X' ), 10000 );
-    // await driver.quit();
   }
   catch ( err ) {
     console.log( err );
   }
-  // finally {
-  //   await driver.close();
-  // }
+  finally {
+    await delay( 3 * 1000 );
+    await driver.quit();
+  }
 })();
-
-// how to handle error
-// try catch or findelements and if else block
