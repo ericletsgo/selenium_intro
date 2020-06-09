@@ -5,17 +5,17 @@ const chromedriver = require( 'chromedriver' );
 chrome.setDefaultService( new chrome.ServiceBuilder( chromedriver.path ).build() );
 
 module.exports.amazonIPhoneXScraper = async function() {
-  var capabilities = {
-    'browserName' : 'Safari',
-    'browser_version' : '13.0',
-    'os' : 'OS X',
-    'os_version' : 'Catalina',
-    'resolution' : '1920x1080',
-    'browserstack.user' : 'ericwang11',
-    'browserstack.key' : 'y8pJzxhu1ZVYw6zyxqqs',
-    'name' : 'SE onboard Selenium Webcrawler',
-    'browserstack.console' : 'verbose',
-  }
+  // var capabilities = {
+  //   'browserName' : 'Safari',
+  //   'browser_version' : '13.0',
+  //   'os' : 'OS X',
+  //   'os_version' : 'Catalina',
+  //   'resolution' : '1920x1080',
+  //   'browserstack.user' : '',
+  //   'browserstack.key' : '',
+  //   'name' : 'SE onboard Selenium Webcrawler',
+  //   'browserstack.console' : 'verbose',
+  // }
 
   let driver = await new Builder().
     usingServer('http://hub-cloud.browserstack.com/wd/hub').
